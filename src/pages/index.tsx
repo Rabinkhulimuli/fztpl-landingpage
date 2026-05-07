@@ -1,51 +1,35 @@
-import Navbar from "@/components/sites/Navbar";
-import Hero from "@/components/sites/Hero";
-import TrustedBy from "@/components/sites/TrustedBy";
-import Services from "@/components/sites/Services";
-import CaseStudies from "@/components/sites/CaseStudies";
-import Process from "@/components/sites/Process";
-import WhyChoose from "@/components/sites/WhyChoose";
-import Testimonials from "@/components/sites/Testimonials";
-import TechStack from "@/components/sites/TechStack";
-import FinalCTA from "@/components/sites/FinalCTA";
-import Footer from "@/components/sites/Footer";
-import MobileCTA from "@/components/sites/MobileCTA";
-import FAQ from "@/components/sites/Faq";
 
-const Index = () => {
+import Footer from '@/components/sites/layout/Footer';
+import { Navbar } from '@/components/sites/layout/Navbar';
+import { Hero } from '@/components/sites/sections/Hero';
+import { ProcessAndIndustries } from '@/components/sites/sections/ProcessAndIndustries';
+import { ProjectShowcase } from '@/components/sites/sections/ProjectShowcase';
+import { Services } from '@/components/sites/sections/Services';
+import { TestimonialsAndCTA } from '@/components/sites/sections/TestimonialsAndCTA';
+import { Button } from '@/components/ui/button';
+
+const Home = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-clip">
+    <main className="min-h-screen bg-background selection:bg-primary/30 selection:text-white">
       <Navbar />
-      <main>
+      <div className="relative">
         <Hero />
-        <TrustedBy />
         <Services />
-        <CaseStudies />
-        <Process />
-        <WhyChoose />
-        <Testimonials />
-        <TechStack />
-        <FinalCTA />
-        <FAQ/>
-      </main>
-      <Footer />
-      <MobileCTA />
+        <ProjectShowcase />
+        <ProcessAndIndustries />
+        <TestimonialsAndCTA />
+      </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "FZTPL",
-            url: "/",
-            description:
-              "FZTPL is a senior engineering partner for ambitious teams building web, mobile, and AI products.",
-          }),
-        }}
-      />
-    </div>
+      <Footer />
+
+      {/* Mobile Sticky CTA */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t border-border z-[100]">
+        <Button onClick={() => window.location.href = 'mailto:hello@fztpl.com'} className="w-full bg-gradient-premium py-6 rounded-xl text-lg font-bold">
+          Book a Consultation
+        </Button>
+      </div>
+    </main>
   );
 };
 
-export default Index;
+export default Home;
